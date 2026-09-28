@@ -1,0 +1,27 @@
+name: Validate quest 15547 v4
+
+on:
+  push:
+    branches:
+      - validate-15547-v4
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install root dependencies
+        run: npm ci
+      - name: Model eval unit tests
+        run: node --test operations/model-evals/src/*.test.js
+      - name: Biome check quest files
+        run: npx biome check operations/model-evals/src/*.js operations/model-monitor/src/EvalsPage.jsx operations/model-monitor/src/hooks/useModelEvals.js operations/model-monitor/src/App.jsx
+      - name: Install model monitor dependencies
+        run: npm ci --prefix operations/model-monitor
+      - name: Build model monitor
+        run: npm run build --prefix operations/model-monitor
