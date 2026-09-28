@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-09-28T10-44-43",
+  "createdAt": "2026-09-28T10:44:43.298Z",
+  "runSeed": 1790592235,
+  "families": [
+    "aiw",
+    "aiw_plus",
+    "bowls"
+  ],
+  "trialsPerFamily": 1,
+  "totalCost": 0.0005616743,
+  "models": [
+    {
+      "model": "community/MarcosFRG/deepseek-v4-flash-0731",
+      "community": true,
+      "score": 1,
+      "marginOfError": 0.2807485158775227,
+      "correct": 3,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.0000054868,
+      "averageLatencyMs": 9150.666666666666,
+      "families": {
+        "aiw": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 316491439,
+          "ok": true,
+          "correct": true,
+          "expected": 4,
+          "output": "Let's go through the problem step by step.\n\n1. Alice has **1 brother** and **3 sisters**.\n2. This means in the family, there are:\n   - Alice herself\n   - 1 brother\n   - 3 sisters (other than Alice)\n   \n   So total siblings = Alice + 1 brother + 3 sisters = 5 children.\n\n3. Now, think from the perspective of one of Alice's brothers:\n   - He does **not** count himself as a brother or sister.\n   - His sisters are: Alice + Alice's 3 sisters = 4 sisters in total.\n   \n4. The question asks: How many sisters does one of Alice's brothers have?  \n   That is **4**.\n\nFinal answer: 4",
+          "error": null,
+          "latencyMs": 9978,
+          "cost": 0.0000020856
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 316492448,
+          "ok": true,
+          "correct": true,
+          "expected": 5,
+          "output": "Let's go step by step.\n\n- Alice has 3 brothers and 4 sisters.\n- Since Alice is a sister herself, the \"4 sisters\" refers to Alice's sisters (not including herself).  \n  That means Alice’s siblings are: 3 brothers + 4 sisters + Alice = 8 children total in the family.\n\n- Now, we need: how many sisters does one of Alice’s brothers have?  \n  A brother would count all his female siblings.  \n  That includes Alice + her 4 sisters = 5 sisters.\n\nThe information about the father’s sisters and mother’s brothers doesn’t affect the number of sisters a brother has.\n\n**Final answer: 5**",
+          "error": null,
+          "latencyMs": 9868,
+          "cost": 0.0000021736000000000002
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 316493457,
+          "ok": true,
+          "correct": true,
+          "expected": 17,
+          "output": "Let's go step-by-step.  \n\n- There are 8 bowls.  \n- 3 are empty.  \n- So, 8 − 3 = 5 non-empty bowls.  \n- Of these 5, **4 bowls** each contain 4 pieces of fruit:  \n  4 × 4 = 16 pieces.  \n- The remaining 1 bowl contains 1 piece of fruit.  \n- Total fruit: 16 + 1 = 17.  \n\nFinal answer: 17",
+          "error": null,
+          "latencyMs": 7606,
+          "cost": 0.0000012276
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "openai/gpt-6-luna",
+      "community": false,
+      "score": 1,
+      "marginOfError": 0.2807485158775227,
+      "correct": 3,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.0001993,
+      "averageLatencyMs": 5289.333333333333,
+      "families": {
+        "aiw": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 981711018,
+          "ok": true,
+          "correct": true,
+          "expected": 5,
+          "output": "One of Alice’s brothers has Alice and her four sisters as sisters, for a total of 5.\n\nFinal answer: 5",
+          "error": null,
+          "latencyMs": 5051,
+          "cost": 0.0000554
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 981712027,
+          "ok": true,
+          "correct": true,
+          "expected": 6,
+          "output": "Alice’s brothers share the same six sisters: Alice and her five sisters. Her parents’ siblings don’t affect the count.\n\nFinal answer: 6",
+          "error": null,
+          "latencyMs": 5184,
+          "cost": 0.000058099999999999996
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 981713036,
+          "ok": true,
+          "correct": true,
+          "expected": 28,
+          "output": "There are 4 non-empty bowls, and each contains 7 pieces of fruit: \\(4 \\times 7 = 28\\).\n\nFinal answer: 28",
+          "error": null,
+          "latencyMs": 5633,
+          "cost": 0.0000858
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "openai/gpt-5.4-nano",
+      "community": false,
+      "score": 0.3333333333333333,
+      "marginOfError": 0.365424227238778,
+      "correct": 1,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.0003568875,
+      "averageLatencyMs": 5916.333333333333,
+      "families": {
+        "aiw": {
+          "correct": 0,
+          "total": 1,
+          "failures": 0,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 0,
+          "total": 1,
+          "failures": 0,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 992151545,
+          "ok": true,
+          "correct": false,
+          "expected": 5,
+          "output": "Alice has 3 brothers and 4 sisters. Since Alice is one of the sisters, the total number of sisters in the family is 4, which means the other sisters are the remaining 3 sisters besides any one sister.\n\nOne of Alice’s brothers therefore has the other sisters (not including himself), i.e., 4 sisters in total. But when asked “How many sisters does one of Alice’s brothers have?”, we count all sisters in the family: 4.\n\nFinal answer: 4",
+          "error": null,
+          "latencyMs": 6181,
+          "cost": 0.0001041
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 992152554,
+          "ok": true,
+          "correct": false,
+          "expected": 3,
+          "output": "Alice’s father has **1 sister**. That means Alice’s father has **2 sisters total**? Careful: “Alice’s father has 1 sisters” is asking how many sisters he has—so he has **1 sister** (i.e., one paternal aunt of Alice). That does not directly tell us how many girls Alice’s brothers will have, except through the children of Alice’s brothers’ parents—i.e., the brothers are all children of Alice’s parents.\n\nSo instead count the family structure Alice already gives:\n- Alice has **5 brothers** and **2 sisters**.\n- Therefore, the total number of sisters in Alice’s immediate set (her siblings) is **2**.\n\nNow ask: **one of Alice’s brothers**—that brother’s sisters",
+          "error": null,
+          "latencyMs": 6200,
+          "cost": 0.00015915000000000002
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 992153563,
+          "ok": true,
+          "correct": true,
+          "expected": 33,
+          "output": "There are 7 bowls total, and 2 are empty, so 5 bowls are non-empty.\n\nAmong those 5 non-empty bowls:\n- 4 bowls each have 6 pieces → \\(4 \\times 6 = 24\\)\n- 1 bowl has 9 pieces → \\(9\\)\n\nTotal pieces on the table:\n\\[\n24 + 9 = 33\n\\]\n\nFinal answer: 33",
+          "error": null,
+          "latencyMs": 5368,
+          "cost": 0.0000936375
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "community/Saauf/gpt-6-luna",
+      "community": true,
+      "score": 0,
+      "marginOfError": 0.2807485158775227,
+      "correct": 0,
+      "total": 3,
+      "failures": 3,
+      "cost": 0,
+      "averageLatencyMs": 753.6666666666666,
+      "families": {
+        "aiw": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 3707573064,
+          "ok": false,
+          "correct": false,
+          "expected": 6,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:15.115Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 915,
+          "cost": 0
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 3707574073,
+          "ok": false,
+          "correct": false,
+          "expected": 2,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:15.823Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 709,
+          "cost": 0
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 3707575082,
+          "ok": false,
+          "correct": false,
+          "expected": 37,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:16.457Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 637,
+          "cost": 0
+        }
+      ],
+      "officialMatch": "openai/gpt-6-luna",
+      "comparison": {
+        "officialScore": 1,
+        "gap": 1,
+        "combinedMargin": 0.3970383587701108,
+        "significant": true
+      }
+    },
+    {
+      "model": "deepseek/deepseek-v4.1-flash",
+      "community": false,
+      "score": 0,
+      "marginOfError": 0.2807485158775227,
+      "correct": 0,
+      "total": 3,
+      "failures": 3,
+      "cost": 0,
+      "averageLatencyMs": 814.6666666666666,
+      "families": {
+        "aiw": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 2559131008,
+          "ok": false,
+          "correct": false,
+          "expected": 5,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:12.428Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 679,
+          "cost": 0
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 2559132017,
+          "ok": false,
+          "correct": false,
+          "expected": 3,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:13.475Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 1043,
+          "cost": 0
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 2559133026,
+          "ok": false,
+          "correct": false,
+          "expected": 28,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:14.200Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 722,
+          "cost": 0
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "qwen/qwen3.8-2.4t-a95b",
+      "community": false,
+      "score": 0,
+      "marginOfError": 0.2807485158775227,
+      "correct": 0,
+      "total": 3,
+      "failures": 3,
+      "cost": 0,
+      "averageLatencyMs": 722,
+      "families": {
+        "aiw": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 3296412887,
+          "ok": false,
+          "correct": false,
+          "expected": 5,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:14.292Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 666,
+          "cost": 0
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 3296413896,
+          "ok": false,
+          "correct": false,
+          "expected": 8,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:15.112Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 816,
+          "cost": 0
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 3296414905,
+          "ok": false,
+          "correct": false,
+          "expected": 28,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T10:44:15.795Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 684,
+          "cost": 0
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    }
+  ]
+}
