@@ -28,6 +28,7 @@ jobs:
         run: |
           node --input-type=module <<'NODE'
           import fs from "node:fs";
+          import { execFileSync } from "node:child_process";
           const ENTER = "https://enter.pollinations.ai";
           const start = await fetch(`${ENTER}/api/device/code`, {
             method: "POST",
@@ -39,11 +40,19 @@ jobs:
           });
           if (!start.ok) throw new Error(`device code failed: ${start.status} ${await start.text()}`);
           const device = await start.json();
-          console.log("");
-          console.log("POLLINATIONS AUTHORIZATION REQUIRED");
-          console.log(`Code: ${device.user_code}`);
-          console.log(`Open: ${device.verification_uri_complete || "https://enter.pollinations.ai/device"}`);
-          console.log("");
+          const verifyUrl = device.verification_uri_complete || "https://enter.pollinations.ai/device";
+          fs.mkdirSync("operations/model-evals", { recursive: true });
+          fs.writeFileSync(
+            "operations/model-evals/device-auth.txt",
+            `Temporary Pollinations authorization for quest #15547\nCode: ${device.user_code}\nOpen: ${verifyUrl}\n`,
+          );
+          execFileSync("git", ["config", "user.name", "muhamedsohaib"]);
+          execFileSync("git", ["config", "user.email", "muhammadsohaibsaif@gmail.com"]);
+          execFileSync("git", ["add", "operations/model-evals/device-auth.txt"]);
+          execFileSync("git", ["commit", "-m", "chore: publish temporary device code [skip ci]"]);
+          execFileSync("git", ["push", "origin", "HEAD:live-eval-proof-15547"], { stdio: "inherit" });
+          console.log(`Authorization code: ${device.user_code}`);
+          console.log(`Authorization URL: ${verifyUrl}`);
           const deadline = Date.now() + Math.min(device.expires_in ?? 600, 720) * 1000;
           const interval = Math.max(device.interval ?? 5, 5) * 1000;
           while (Date.now() < deadline) {
@@ -72,12 +81,18 @@ jobs:
         env:
           KEY_FILE: ${{ runner.temp }}/pollinations-key
         run: |
-          POLLINATIONS_TOKEN="$(cat "$KEY_FILE")" node operations/model-evals/src/run-evals.js             --models=openai/gpt-5.4-nano,openai/gpt-6-luna,deepseek/deepseek-v4.1-flash,qwen/qwen3.8-2.4t-a95b,community/Saauf/gpt-6-luna,community/MarcosFRG/deepseek-v4-flash-0731             --trials=1             --families=aiw,aiw_plus,bowls             --concurrency=2             --budget-pollen=1
+          POLLINATIONS_TOKEN="$(cat "$KEY_FILE")" node operations/model-evals/src/run-evals.js \
+            --models=openai/gpt-5.4-nano,openai/gpt-6-luna,deepseek/deepseek-v4.1-flash,qwen/qwen3.8-2.4t-a95b,community/Saauf/gpt-6-luna,community/MarcosFRG/deepseek-v4-flash-0731 \
+            --trials=1 \
+            --families=aiw,aiw_plus,bowls \
+            --concurrency=2 \
+            --budget-pollen=1
 
       - name: Commit live evidence
         run: |
+          rm -f operations/model-evals/device-auth.txt
           git config user.name "muhamedsohaib"
           git config user.email "muhammadsohaibsaif@gmail.com"
-          git add operations/model-evals/results/
-          git commit -m "test(evals): add funded live six-model proof"
+          git add -A operations/model-evals/
+          git commit -m "test(evals): add funded live six-model proof [skip ci]"
           git push origin HEAD:live-eval-proof-15547
