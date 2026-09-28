@@ -1,3 +1,0 @@
-Temporary Pollinations authorization for quest #15547 final proof
-Code: RQ2STNPJ
-Open: https://enter.pollinations.ai/device?user_code=RQ2STNPJ
