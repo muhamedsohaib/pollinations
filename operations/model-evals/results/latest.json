@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-09-28T11-12-51",
+  "createdAt": "2026-09-28T11:12:51.543Z",
+  "runSeed": 1790593889,
+  "families": [
+    "aiw",
+    "aiw_plus",
+    "bowls"
+  ],
+  "trialsPerFamily": 1,
+  "totalCost": 0.0112393321,
+  "models": [
+    {
+      "model": "community/MarcosFRG/deepseek-v4-flash-0731",
+      "community": true,
+      "score": 1,
+      "marginOfError": 0.2807485158775227,
+      "correct": 3,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.0000075196,
+      "averageLatencyMs": 16946.333333333332,
+      "families": {
+        "aiw": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 316493093,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 4 brothers and 1 sisters. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 2,
+          "output": "Let's break it down:\n\n- Alice has **4 brothers** and **1 sister**.\n- The \"1 sister\" is Alice herself? Wait, careful — if Alice is a girl, her siblings are counted from her perspective.  \n  The statement says Alice has 4 brothers and 1 sister. That means among her siblings, there is 1 girl (her sister) and 4 boys (her brothers).\n\nFrom the perspective of one of Alice's brothers:\n- His siblings include **all** of Alice’s siblings except himself.\n- The brother's sisters would be: Alice + Alice's sister = 2 sisters.\n\nSo, one of Alice's brothers has **2 sisters**.\n\nFinal answer: 2",
+          "error": null,
+          "latencyMs": 15718,
+          "cost": 0.0000020988
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 316494102,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 1 brothers and 5 sisters. Alice's father has 1 sisters, and Alice's mother has 1 brothers. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 6,
+          "output": "Let's go through the problem step by step.\n\n1. **Alice's family:**\n   - Alice has 1 brother and 5 sisters.  \n   - Since Alice is female, her siblings are:  \n     - 1 brother  \n     - 5 sisters (who are *Alice's* sisters, not counting Alice herself)  \n   - That means in total, the children in the family are:  \n     Alice + 5 sisters + 1 brother = 7 children.\n\n2. **What the question asks:**  \n   \"How many sisters does one of Alice's brothers have?\"  \n   - The brother has as sisters all the girls in the family except himself (he is male).  \n   - Girls in family: Alice + 5 other sisters = 6 girls total.  \n   - So **each brother has 6 sisters**.\n\n3. The information about father’s sisters and mother’s brothers is irrelevant to the sibling count — it's just distraction.\n\nFinal answer: 6\n\nFinal answer: 6",
+          "error": null,
+          "latencyMs": 7580,
+          "cost": 0.000002926
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 316495111,
+          "ok": true,
+          "correct": true,
+          "prompt": "There are 8 bowls on a table. 2 are empty. Of the non-empty bowls, 5 each contain 4 pieces of fruit and one contains 3. How many pieces of fruit are on the table? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 23,
+          "output": "First, identify how many bowls are non-empty.  \nThere are 8 bowls total, 2 empty → 8 - 2 = 6 non-empty bowls.\n\nOf these 6 bowls:  \n- 5 bowls each contain 4 pieces of fruit → 5 × 4 = 20 pieces  \n- 1 bowl contains 3 pieces of fruit → 3 pieces  \n\nTotal fruit = 20 + 3 = 23.\n\nFinal answer: 23",
+          "error": null,
+          "latencyMs": 27541,
+          "cost": 0.0000024948000000000002
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "openai/gpt-5.6-luna",
+      "community": false,
+      "score": 1,
+      "marginOfError": 0.2807485158775227,
+      "correct": 3,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.00038774999999999997,
+      "averageLatencyMs": 5137.666666666667,
+      "families": {
+        "aiw": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 302768533,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 4 brothers and 1 sisters. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 2,
+          "output": "Alice’s brother has Alice as a sister, plus Alice’s one other sister. Therefore, he has 2 sisters.\n\nFinal answer: 2",
+          "error": null,
+          "latencyMs": 5258,
+          "cost": 0.0001272
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 302769542,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 1 brothers and 5 sisters. Alice's father has 1 sisters, and Alice's mother has 1 brothers. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 6,
+          "output": "Alice’s brother has the same 5 sisters that Alice has, plus Alice herself. Therefore, he has 6 sisters.\n\nFinal answer: 6",
+          "error": null,
+          "latencyMs": 5529,
+          "cost": 0.00014325
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 302770551,
+          "ok": true,
+          "correct": true,
+          "prompt": "There are 8 bowls on a table. 2 are empty. Of the non-empty bowls, 5 each contain 4 pieces of fruit and one contains 3. How many pieces of fruit are on the table? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 23,
+          "output": "There are 5 bowls with 4 pieces each: \\(5 \\times 4 = 20\\). Adding the 3 pieces in the remaining non-empty bowl gives \\(20 + 3 = 23\\).\n\nFinal answer: 23",
+          "error": null,
+          "latencyMs": 4626,
+          "cost": 0.0001173
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "openai/gpt-6-astra",
+      "community": false,
+      "score": 1,
+      "marginOfError": 0.2807485158775227,
+      "correct": 3,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.010430000000000002,
+      "averageLatencyMs": 5298.666666666667,
+      "families": {
+        "aiw": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 44378055,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 4 brothers and 1 sisters. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 2,
+          "output": "One of Alice’s brothers has two sisters: Alice and her one sister.\n\nFinal answer: 2",
+          "error": null,
+          "latencyMs": 5370,
+          "cost": 0.00264
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 44379064,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 1 brothers and 5 sisters. Alice's father has 1 sisters, and Alice's mother has 1 brothers. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 6,
+          "output": "Alice’s brother has Alice and her 5 sisters as his sisters, for a total of 6. The parents’ siblings don’t affect this count.\n\nFinal answer: 6",
+          "error": null,
+          "latencyMs": 5306,
+          "cost": 0.0034600000000000004
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 44380073,
+          "ok": true,
+          "correct": true,
+          "prompt": "There are 8 bowls on a table. 2 are empty. Of the non-empty bowls, 5 each contain 4 pieces of fruit and one contains 3. How many pieces of fruit are on the table? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 23,
+          "output": "The 2 empty bowls contribute no fruit. The other bowls contain \\(5 \\times 4 + 3 = 20 + 3 = 23\\) pieces.\n\nFinal answer: 23",
+          "error": null,
+          "latencyMs": 5220,
+          "cost": 0.0043300000000000005
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "openai/gpt-6-luna",
+      "community": false,
+      "score": 1,
+      "marginOfError": 0.2807485158775227,
+      "correct": 3,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.0001828,
+      "averageLatencyMs": 4702.333333333333,
+      "families": {
+        "aiw": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 981712672,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 4 brothers and 1 sisters. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 2,
+          "output": "Alice’s brother has two sisters: Alice and Alice’s other sister.\n\nFinal answer: 2",
+          "error": null,
+          "latencyMs": 6105,
+          "cost": 0.0000599
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 981713681,
+          "ok": true,
+          "correct": true,
+          "prompt": "Alice has 1 brothers and 5 sisters. Alice's father has 1 sisters, and Alice's mother has 1 brothers. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 6,
+          "output": "Alice’s brother has the same six sisters Alice does: Alice herself and her five sisters. Her parents’ siblings don’t affect the count.\n\nFinal answer: 6",
+          "error": null,
+          "latencyMs": 4163,
+          "cost": 0.0000666
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 981714690,
+          "ok": true,
+          "correct": true,
+          "prompt": "There are 8 bowls on a table. 2 are empty. Of the non-empty bowls, 5 each contain 4 pieces of fruit and one contains 3. How many pieces of fruit are on the table? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 23,
+          "output": "Five bowls contain 4 pieces each, and one contains 3: \\(5 \\times 4 + 3 = 23\\).\n\nFinal answer: 23",
+          "error": null,
+          "latencyMs": 3839,
+          "cost": 0.0000563
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "openai/gpt-5.4-nano",
+      "community": false,
+      "score": 0.3333333333333333,
+      "marginOfError": 0.365424227238778,
+      "correct": 1,
+      "total": 3,
+      "failures": 0,
+      "cost": 0.0002312625,
+      "averageLatencyMs": 4889.666666666667,
+      "families": {
+        "aiw": {
+          "correct": 0,
+          "total": 1,
+          "failures": 0,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 0,
+          "total": 1,
+          "failures": 0,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 1,
+          "total": 1,
+          "failures": 0,
+          "score": 1,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 992153199,
+          "ok": true,
+          "correct": false,
+          "prompt": "Alice has 4 brothers and 1 sisters. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 2,
+          "output": "Alice has 4 brothers and 1 sister, so there are 5 children total. One of Alice’s brothers is a child who has:\n- the other 3 brothers (besides himself and Alice’s brothers count),\n- and 1 sister (Alice).\n\nSo each of Alice’s brothers has **1 sister**.\n\nFinal answer: 1",
+          "error": null,
+          "latencyMs": 5275,
+          "cost": 0.0000750375
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 992154208,
+          "ok": true,
+          "correct": false,
+          "prompt": "Alice has 1 brothers and 5 sisters. Alice's father has 1 sisters, and Alice's mother has 1 brothers. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 6,
+          "output": "Alice has 1 brother and 5 sisters. So her brother has the same siblings: 5 sisters (Alice included) and 1 brother (himself). Therefore, the brother has 5 sisters.\n\nFinal answer: 5",
+          "error": null,
+          "latencyMs": 4177,
+          "cost": 0.000056025
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 992155217,
+          "ok": true,
+          "correct": true,
+          "prompt": "There are 8 bowls on a table. 2 are empty. Of the non-empty bowls, 5 each contain 4 pieces of fruit and one contains 3. How many pieces of fruit are on the table? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 23,
+          "output": "There are 8 bowls total, and 2 are empty, so 6 bowls are non-empty.\n\nOf these 6 non-empty bowls:\n- 5 bowls have 4 pieces each → \\(5 \\times 4 = 20\\)\n- 1 bowl has 3 pieces → \\(1 \\times 3 = 3\\)\n\nTotal pieces on the table:\n\\[\n20 + 3 = 23\n\\]\n\nFinal answer: 23",
+          "error": null,
+          "latencyMs": 5217,
+          "cost": 0.00010020000000000001
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    },
+    {
+      "model": "openai/gpt-6-sol",
+      "community": false,
+      "score": 0,
+      "marginOfError": 0.2807485158775227,
+      "correct": 0,
+      "total": 3,
+      "failures": 3,
+      "cost": 0,
+      "averageLatencyMs": 490,
+      "families": {
+        "aiw": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "aiw_plus": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        },
+        "bowls": {
+          "correct": 0,
+          "total": 1,
+          "failures": 1,
+          "score": 0,
+          "marginOfError": 0.3967253428113813
+        }
+      },
+      "trials": [
+        {
+          "family": "aiw",
+          "repeat": 0,
+          "seed": 2880017930,
+          "ok": false,
+          "correct": false,
+          "prompt": "Alice has 4 brothers and 1 sisters. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 2,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T11:11:44.675Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 476,
+          "cost": 0
+        },
+        {
+          "family": "aiw_plus",
+          "repeat": 0,
+          "seed": 2880018939,
+          "ok": false,
+          "correct": false,
+          "prompt": "Alice has 1 brothers and 5 sisters. Alice's father has 1 sisters, and Alice's mother has 1 brothers. How many sisters does one of Alice's brothers have? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 6,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T11:11:45.211Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 539,
+          "cost": 0
+        },
+        {
+          "family": "bowls",
+          "repeat": 0,
+          "seed": 2880019948,
+          "ok": false,
+          "correct": false,
+          "prompt": "There are 8 bowls on a table. 2 are empty. Of the non-empty bowls, 5 each contain 4 pieces of fruit and one contains 3. How many pieces of fruit are on the table? Think it through. End with a separate line exactly: Final answer: <integer>",
+          "expected": 23,
+          "output": null,
+          "error": "HTTP 400: {\"success\":false,\"error\":{\"message\":\"JSON body validation failed\",\"code\":\"BAD_REQUEST\",\"timestamp\":\"2026-09-28T11:11:45.672Z\",\"details\":{\"name\":\"ValidationError",
+          "latencyMs": 455,
+          "cost": 0
+        }
+      ],
+      "officialMatch": null,
+      "comparison": null
+    }
+  ]
+}
