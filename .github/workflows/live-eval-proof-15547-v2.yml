@@ -1,0 +1,95 @@
+name: Live eval proof 15547 v2
+
+on:
+  push:
+    branches:
+      - live-eval-proof-15547-v2
+
+permissions:
+  contents: write
+
+jobs:
+  live-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout proof branch
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Request Pollinations device authorization
+        env:
+          KEY_FILE: ${{ runner.temp }}/pollinations-key
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          import { execFileSync } from "node:child_process";
+          const ENTER = "https://enter.pollinations.ai";
+          const start = await fetch(`${ENTER}/api/device/code`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              client_id: "pk_VZF38YW4tQX36SEn",
+              scope: "generate",
+            }),
+          });
+          if (!start.ok) throw new Error(`device code failed: ${start.status} ${await start.text()}`);
+          const device = await start.json();
+          const verifyUrl = device.verification_uri_complete || "https://enter.pollinations.ai/device";
+          fs.mkdirSync("operations/model-evals", { recursive: true });
+          fs.writeFileSync(
+            "operations/model-evals/device-auth.txt",
+            `Temporary Pollinations authorization for quest #15547 v2\nCode: ${device.user_code}\nOpen: ${verifyUrl}\n`,
+          );
+          execFileSync("git", ["config", "user.name", "muhamedsohaib"]);
+          execFileSync("git", ["config", "user.email", "muhammadsohaibsaif@gmail.com"]);
+          execFileSync("git", ["add", "operations/model-evals/device-auth.txt"]);
+          execFileSync("git", ["commit", "-m", "chore: publish temporary eval authorization [skip ci]"]);
+          execFileSync("git", ["push", "origin", "HEAD:live-eval-proof-15547-v2"], { stdio: "inherit" });
+
+          console.log(`Authorization code: ${device.user_code}`);
+          console.log(`Authorization URL: ${verifyUrl}`);
+
+          const deadline = Date.now() + Math.min(device.expires_in ?? 600, 720) * 1000;
+          const interval = Math.max(device.interval ?? 5, 5) * 1000;
+          while (Date.now() < deadline) {
+            await new Promise((resolve) => setTimeout(resolve, interval));
+            const res = await fetch(`${ENTER}/api/device/token`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                device_code: device.device_code,
+                grant_type: "urn:ietf:params:oauth:grant-type:device_code",
+              }),
+            });
+            const body = await res.json();
+            if (res.ok && body.access_token) {
+              fs.writeFileSync(process.env.KEY_FILE, body.access_token, { mode: 0o600 });
+              console.log("Authorization approved.");
+              process.exit(0);
+            }
+            if (body.error === "authorization_pending" || body.error === "slow_down") continue;
+            throw new Error(`authorization failed: ${body.error || res.status}`);
+          }
+          throw new Error("device authorization expired");
+          NODE
+
+      - name: Run six-model live proof
+        env:
+          KEY_FILE: ${{ runner.temp }}/pollinations-key
+        run: |
+          POLLINATIONS_TOKEN="$(cat "$KEY_FILE")" node operations/model-evals/src/run-evals.js             --models=openai/gpt-5.4-nano,openai/gpt-5.6-luna,openai/gpt-6-luna,openai/gpt-6-sol,openai/gpt-6-astra,community/MarcosFRG/deepseek-v4-flash-0731             --trials=1             --families=aiw,aiw_plus,bowls             --concurrency=2             --budget-pollen=1
+
+      - name: Commit live evidence
+        run: |
+          rm -f operations/model-evals/device-auth.txt
+          git config user.name "muhamedsohaib"
+          git config user.email "muhammadsohaibsaif@gmail.com"
+          git add -A operations/model-evals/
+          git commit -m "test(evals): add fair funded six-model proof [skip ci]"
+          git push origin HEAD:live-eval-proof-15547-v2
